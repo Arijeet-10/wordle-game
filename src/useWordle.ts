@@ -50,6 +50,7 @@ export function useWordle() {
   const [keyboardMap, setKeyboardMap] = useState<Record<string, "correct" | "present" | "absent">>({});
   const [level, setLevel] = useState<number>(1);
   const [score, setScore] = useState<number>(0);
+  const [hintUsed, setHintUsed] = useState<boolean>(false);
 
   const canType = status === "playing" && rows.length < MAX_ROWS;
 
@@ -59,8 +60,22 @@ export function useWordle() {
     setCurrent("");
     setStatus("playing");
     setKeyboardMap({});
+    setHintUsed(false);
     if (advanceLevel) setLevel(lvl => lvl + 1);
   }, []);
+  // Hint: reveal a correct letter in the current word
+  const useHint = useCallback(() => {
+    if (hintUsed || status !== "playing") return;
+    // Find first unrevealed correct letter
+    for (let i = 0; i < solution.length; i++) {
+      if (current[i] !== solution[i]) {
+        // Fill that letter in current guess
+        setCurrent(prev => prev.substring(0, i) + solution[i] + prev.substring(i + 1));
+        setHintUsed(true);
+        break;
+      }
+    }
+  }, [hintUsed, status, current, solution]);
 
   const onChar = useCallback((c: string) => {
     if (!canType) return;
@@ -136,6 +151,7 @@ export function useWordle() {
     solution, rows, current, status, keyboardMap,
     onChar, onDelete, onEnter, reset, shareText,
     WORD_LEN, MAX_ROWS,
-    level, score, nextLevel
+    level, score, nextLevel,
+    hintUsed, useHint
   };
 }
