@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-zinc-900 text-zinc-100 min-h-screen;
+}
+
+.tile {
+  @apply w-12 h-12 md:w-14 md:h-14 grid place-items-center rounded-lg border border-zinc-700 text-xl md:text-2xl font-bold;
+}
+
+.tile-empty {
+  @apply bg-zinc-800;
+}
+
+.tile-correct {
+  @apply bg-correct border-correct text-white;
+}
+.tile-present {
+  @apply bg-present border-present text-white;
+}
+.tile-absent {
+  @apply bg-absent border-absent text-white;
+}
