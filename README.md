@@ -1,9 +1,9 @@
 # Wordle Game (React + TypeScript)
 
-## This is a clone of the popular Wordle game built with React, TypeScript, and Vite.
+This is a clone of the popular Wordle game built with React, TypeScript, and Vite.
 
 # Description
-## This project is a web-based word-guessing game where players try to guess a five-letter word within six attempts. The game provides feedback on each guess, indicating correct letters in the correct position (green), correct letters in the wrong position (yellow), and incorrect letters (gray). It also includes features like different levels and a scoring system to enhance the user experience.
+This project is a web-based word-guessing game where players try to guess a five-letter word within six attempts. The game provides feedback on each guess, indicating correct letters in the correct position (green), correct letters in the wrong position (yellow), and incorrect letters (gray). It also includes features like different levels and a scoring system to enhance the user experience.
 
 ## Features
 - Classic Wordle gameplay: guess the 5-letter word in 6 tries
